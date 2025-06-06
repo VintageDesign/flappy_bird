@@ -3,7 +3,7 @@ extends CharacterBody2D
 @export var fall_accel = 75
 @export var jump_impulse = 50
 
-
+signal start_game
 
 var target_velocity = Vector2.ZERO
 var game_started = false
@@ -25,3 +25,4 @@ func _physics_process(delta):
 	else:
 		if Input.is_action_pressed("jump"):
 			game_started = true
+			start_game.emit()
