@@ -10,7 +10,7 @@ var game_started = false
 
 func _init():
 	pass
-	#$Camera2D. .screen_get_size()
+	
 
 func _physics_process(delta):
 	
