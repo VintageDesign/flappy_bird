@@ -9,6 +9,10 @@ signal hit
 var target_velocity = Vector2.ZERO
 var game_started = false
 
+func end_game():
+	game_started = false
+	hit.emit()
+
 func _init():
 	pass
 	
@@ -28,8 +32,7 @@ func _physics_process(delta):
 			if collision.get_collider() == null:
 				continue
 			if collision.get_collider().is_in_group("obstacles"):
-				game_started = true
-				hit.emit()
+				end_game()
 
 	else:
 		if Input.is_action_pressed("jump"):
@@ -37,3 +40,7 @@ func _physics_process(delta):
 			start_game.emit()
 
 	
+
+
+func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
+	end_game()
