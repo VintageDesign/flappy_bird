@@ -1,6 +1,6 @@
 extends Node
 
-var game_started = false
+@export var obstacle_scene: PackedScene
 
 func _ready():
 	$player.start_game.connect(on_start_game)
@@ -11,7 +11,18 @@ func _ready():
 	$player.position = player_start_pos
 
 func on_start_game():
-	game_started = true
+	$ObstacleSpawnTick.start()
 	
+func on_spawn_tick_expired():
+	var mob = obstacle_scene.instantiate()
+	mob.position.y = get_viewport().get_visible_rect().size.y
+	mob.position.x = get_viewport().get_visible_rect().size.x + 32
+	
+	
+	add_child(mob)
+	
+
+
+		
 
 	
