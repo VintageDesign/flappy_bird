@@ -4,6 +4,7 @@ extends CharacterBody2D
 @export var jump_impulse = 50
 
 signal start_game
+signal hit
 
 var target_velocity = Vector2.ZERO
 var game_started = false
@@ -22,7 +23,17 @@ func _physics_process(delta):
 		
 		velocity = target_velocity
 		move_and_slide()
+		for i in get_slide_collision_count():
+			var collision = get_slide_collision(i)
+			if collision.get_collider() == null:
+				continue
+			if collision.get_collider().is_in_group("obstacles"):
+				hide()
+				hit.emit()
+
 	else:
 		if Input.is_action_pressed("jump"):
 			game_started = true
 			start_game.emit()
+
+	
