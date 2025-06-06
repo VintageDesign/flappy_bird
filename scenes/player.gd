@@ -28,7 +28,7 @@ func _physics_process(delta):
 			if collision.get_collider() == null:
 				continue
 			if collision.get_collider().is_in_group("obstacles"):
-				hide()
+				game_started = true
 				hit.emit()
 
 	else:

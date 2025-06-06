@@ -21,4 +21,5 @@ color = Color(0, 0.792157, 1, 1)
 [node name="ObstacleSpawnTick" type="Timer" parent="."]
 wait_time = 2.0
 
+[connection signal="hit" from="player" to="." method="_on_player_hit"]
 [connection signal="timeout" from="ObstacleSpawnTick" to="." method="on_spawn_tick_expired"]
