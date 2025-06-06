@@ -25,6 +25,9 @@ func on_spawn_tick_expired():
 	add_child(mob)
 
 func _on_player_hit() -> void:
+	$ObstacleSpawnTick.stop()
 	$player.position = player_start_pos
 	for mob in obstacles:
 		mob.queue_free()
+	
+	obstacles.clear()
