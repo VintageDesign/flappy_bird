@@ -24,6 +24,9 @@ func _physics_process(delta):
 	
 		if Input.is_action_pressed("jump"):
 			target_velocity.y = -1 * jump_impulse 
+			$AnimatedSprite2D.play("flight")
+		
+			
 		
 		velocity = target_velocity
 		move_and_slide()
@@ -44,3 +47,9 @@ func _physics_process(delta):
 
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
 	end_game()
+
+	
+
+
+func _on_animated_sprite_2d_animation_looped() -> void:
+	$AnimatedSprite2D.stop()
