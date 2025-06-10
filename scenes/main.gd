@@ -33,9 +33,12 @@ func on_spawn_tick_expired():
 	
 	obstacles.append(mob)
 	add_child(mob)
+	
+	$HUD.increment_score()
 
 func _on_player_hit() -> void:
 	$ObstacleSpawnTick.stop()
+	$HUD.reset_score()
 	$player.position = player_start_pos
 	for mob in obstacles:
 		if mob != null:

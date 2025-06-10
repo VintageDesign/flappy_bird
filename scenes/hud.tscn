@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://tfqpcakh3hah"]
+
+[ext_resource type="Theme" uid="uid://wv7msxwmemkc" path="res://HUD_Theme.tres" id="1_ahhtf"]
+[ext_resource type="Script" uid="uid://ba6rkhygy8ofa" path="res://scenes/hud.gd" id="1_oo0fn"]
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_oo0fn")
+
+[node name="Score Label" type="Label" parent="."]
+offset_left = 491.0
+offset_top = 79.0
+offset_right = 555.0
+offset_bottom = 102.0
+theme = ExtResource("1_ahhtf")
+text = "Score:"
+
+[node name="Score value" type="Label" parent="."]
+offset_left = 559.0
+offset_top = 79.0
+offset_right = 643.0
+offset_bottom = 102.0
+theme = ExtResource("1_ahhtf")
+text = "xxxxxx"
