@@ -24,5 +24,4 @@ wait_time = 2.0
 
 [node name="HUD" parent="." instance=ExtResource("4_jyhfs")]
 
-[connection signal="hit" from="player" to="." method="_on_player_hit"]
 [connection signal="timeout" from="ObstacleSpawnTick" to="." method="on_spawn_tick_expired"]

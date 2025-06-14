@@ -7,7 +7,7 @@ var obstacles = []
 
 func _ready():
 	$player.start_game.connect(on_start_game)
-	
+	$player.left_screen.connect(_on_player_hit)
 	player_start_pos.y = get_viewport().get_visible_rect().size.y/2
 	player_start_pos.x = 50
 	
@@ -23,14 +23,16 @@ func on_spawn_tick_expired():
 	mob.position.y = get_viewport().get_visible_rect().size.y + offset
 	mob.position.x = get_viewport().get_visible_rect().size.x + 32
 	
+	mob.hit.connect(_on_player_hit)
 	obstacles.append(mob)
-	add_child(mob)
+	add_child(mob)  
 	
 	mob = obstacle_scene.instantiate()
 	mob.position.y = 0 + offset - spacing_adjustment
 	mob.position.x = get_viewport().get_visible_rect().size.x + 32
 	mob.rotation = PI
 	
+	mob.hit.connect(_on_player_hit)
 	obstacles.append(mob)
 	add_child(mob)
 	
@@ -39,6 +41,7 @@ func on_spawn_tick_expired():
 func _on_player_hit() -> void:
 	$ObstacleSpawnTick.stop()
 	$HUD.reset_score()
+	$player.end_game()
 	$player.position = player_start_pos
 	for mob in obstacles:
 		if mob != null:

@@ -1,24 +1,35 @@
-[gd_scene load_steps=4 format=3 uid="uid://djtf17p1qsx46"]
+[gd_scene load_steps=5 format=3 uid="uid://djtf17p1qsx46"]
 
 [ext_resource type="Texture2D" uid="uid://bixrsjf2o5uwq" path="res://art/pipe.png" id="1_8x3ej"]
 [ext_resource type="Script" uid="uid://dr044u246sgs0" path="res://scenes/pipe.gd" id="1_arpqm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_arpqm"]
-size = Vector2(32, 64)
+size = Vector2(20, 19.5)
 
-[node name="Node" type="CharacterBody2D" groups=["obstacles"]]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8p0di"]
+size = Vector2(31, 128)
+
+[node name="Pipe" type="CharacterBody2D" groups=["obstacles"]]
 collision_layer = 2
+safe_margin = 0.5
 script = ExtResource("1_arpqm")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_8x3ej")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -32)
+position = Vector2(0, 54)
 shape = SubResource("RectangleShape2D_arpqm")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
-position = Vector2(9.53674e-07, -32)
+position = Vector2(0, -32)
 scale = Vector2(1.6, 3.2)
 
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-0.5, 0)
+shape = SubResource("RectangleShape2D_8p0di")
+
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_collision"]
