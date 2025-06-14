@@ -10,10 +10,11 @@ config_version=5
 
 [application]
 
-config/name="New Game Project"
+config/name="FlappyDuck"
+config/version="0.0.1"
 run/main_scene="uid://xn7xwlmwuk7b"
 config/features=PackedStringArray("4.4", "Mobile")
-config/icon="res://icon.svg"
+config/icon="uid://bxxhuehpjnm02"
 
 [display]
 
