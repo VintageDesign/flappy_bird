@@ -20,4 +20,16 @@ offset_top = 79.0
 offset_right = 643.0
 offset_bottom = 102.0
 theme = ExtResource("1_ahhtf")
-text = "xxxxxx"
+text = "0"
+
+[node name="High Score Label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+theme = ExtResource("1_ahhtf")
+text = "High Score:"
+
+[node name="High Score Value" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+theme = ExtResource("1_ahhtf")
+text = "0"
