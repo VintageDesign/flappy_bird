@@ -18,7 +18,7 @@ func on_start_game():
 	
 func on_spawn_tick_expired():
 	var offset = randf_range(0,25)
-	var spacing_adjustment = randi_range(0, 15)
+	var spacing_adjustment = randi_range(0, 7)
 	var mob = obstacle_scene.instantiate()
 	mob.position.y = get_viewport().get_visible_rect().size.y + offset
 	mob.position.x = get_viewport().get_visible_rect().size.x + 32
