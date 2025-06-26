@@ -26,24 +26,14 @@ func on_start_game():
 	$ObstacleSpawnTick.start()
 	
 func on_spawn_tick_expired():
-	var offset = randf_range(0,25)
-	var spacing_adjustment = randi_range(0, 7)
+	var offset = randf_range(-25,25)
 	var mob = obstacle_scene.instantiate()
-	mob.position.y = get_viewport().get_visible_rect().size.y + offset
+	mob.position.y = get_viewport().get_visible_rect().size.y / 2 + offset
 	mob.position.x = get_viewport().get_visible_rect().size.x + 32
 	
 	mob.hit.connect(_on_player_hit)
 	obstacles.append(mob)
 	add_child(mob)  
-	
-	mob = obstacle_scene.instantiate()
-	mob.position.y = 0 + offset - spacing_adjustment
-	mob.position.x = get_viewport().get_visible_rect().size.x + 32
-	mob.rotation = PI
-	
-	mob.hit.connect(_on_player_hit)
-	obstacles.append(mob)
-	add_child(mob)
 	
 	$HUD.increment_score()
 
@@ -54,7 +44,7 @@ func _on_player_hit() -> void:
 	$player.position = player_start_pos
 	
 	
-	if $HUD.get_score() > persistent_data.high_score:
+	if $HUD.get_score() > int(persistent_data.high_score):
 		print("New High Score!")
 		$HUD.set_high_score($HUD.get_score())
 		persistent_data.high_score = $HUD.get_score()

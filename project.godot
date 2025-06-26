@@ -21,7 +21,7 @@ config/icon="uid://bxxhuehpjnm02"
 window/size/mode=2
 window/stretch/mode="viewport"
 window/stretch/aspect="expand"
-window/stretch/scale=4.0
+window/stretch/scale=2.0
 
 [global_group]
 

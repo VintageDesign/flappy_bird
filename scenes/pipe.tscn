@@ -3,33 +3,48 @@
 [ext_resource type="Texture2D" uid="uid://bixrsjf2o5uwq" path="res://art/pipe.png" id="1_8x3ej"]
 [ext_resource type="Script" uid="uid://dr044u246sgs0" path="res://scenes/pipe.gd" id="1_arpqm"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8p0di"]
+size = Vector2(32.5, 1037)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_arpqm"]
 size = Vector2(20, 19.5)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_8p0di"]
-size = Vector2(31, 128)
 
 [node name="Pipe" type="CharacterBody2D" groups=["obstacles"]]
 collision_layer = 2
 safe_margin = 0.5
 script = ExtResource("1_arpqm")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="UpperSprite" type="Sprite2D" parent="."]
+position = Vector2(0, -25)
+rotation = 3.14159
 texture = ExtResource("1_8x3ej")
+offset = Vector2(-0.264657, 815.129)
+
+[node name="Upper" type="Area2D" parent="UpperSprite"]
+rotation = 3.14159
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="UpperSprite/Upper"]
+position = Vector2(3.29944e-05, -519)
+shape = SubResource("RectangleShape2D_8p0di")
+
+[node name="LowerSprite" type="Sprite2D" parent="."]
+position = Vector2(0, 25)
+texture = ExtResource("1_8x3ej")
+offset = Vector2(0, 815)
+
+[node name="Lower" type="Area2D" parent="LowerSprite"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LowerSprite/Lower"]
+position = Vector2(0, 519)
+shape = SubResource("RectangleShape2D_8p0di")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 54)
 shape = SubResource("RectangleShape2D_arpqm")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
-position = Vector2(0, -32)
-scale = Vector2(1.6, 3.2)
+scale = Vector2(1.6, 3.95)
 
-[node name="Area2D" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(-0.5, 0)
-shape = SubResource("RectangleShape2D_8p0di")
-
+[connection signal="body_entered" from="UpperSprite/Upper" to="." method="_on_collision"]
+[connection signal="body_entered" from="LowerSprite/Lower" to="." method="_on_collision"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
-[connection signal="body_entered" from="Area2D" to="." method="_on_collision"]
