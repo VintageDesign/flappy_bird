@@ -37,14 +37,8 @@ func _physics_process(delta):
 			game_started = true
 			start_game.emit()
 
-	
-
-
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
 	left_screen.emit()
-
-	
-
 
 func _on_animated_sprite_2d_animation_looped() -> void:
 	$PlayerBody.stop()

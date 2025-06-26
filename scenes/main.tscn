@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://tfqpcakh3hah" path="res://scenes/hud.tscn" id="4_jyhfs"]
 
 [node name="Main" type="Node"]
+process_mode = 3
 script = ExtResource("1_0wfyh")
 obstacle_scene = ExtResource("2_sugp2")
 
@@ -18,8 +19,10 @@ grow_vertical = 2
 color = Color(0, 0.792157, 1, 1)
 
 [node name="player" parent="." instance=ExtResource("1_o5qli")]
+process_mode = 1
 
 [node name="ObstacleSpawnTick" type="Timer" parent="."]
+process_mode = 1
 wait_time = 2.0
 
 [node name="HUD" parent="." instance=ExtResource("4_jyhfs")]

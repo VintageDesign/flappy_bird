@@ -8,10 +8,23 @@ var persistent_data = PersistentData.new()
 var player_start_pos = Vector2.ZERO
 var obstacles = []
 
+enum {IN_GAME, PAUSED}
+var game_state = IN_GAME
+
 func _init():
 	persistent_data.load()
 	
-
+func _input(_event):
+	if Input.is_action_just_pressed("pause"):
+		if game_state == PAUSED:
+			print("Unpause")
+			get_tree().paused = false
+			game_state = IN_GAME
+		else:
+			print("Pause")
+			get_tree().paused = true
+			game_state = PAUSED
+			
 
 func _ready():
 	$HUD.set_high_score(persistent_data.high_score)
