@@ -1,8 +1,13 @@
-[gd_scene load_steps=9 format=3 uid="uid://bkbs37h0ibl7x"]
+[gd_scene load_steps=24 format=3 uid="uid://bkbs37h0ibl7x"]
 
 [ext_resource type="Texture2D" uid="uid://bxxhuehpjnm02" path="res://art/duck.png" id="1_3vyb7"]
 [ext_resource type="Script" uid="uid://kxfq2womqvig" path="res://scenes/player.gd" id="1_g2els"]
 [ext_resource type="Texture2D" uid="uid://ctjk2egpbh1f7" path="res://art/duck_flying.png" id="3_qhqgy"]
+[ext_resource type="Texture2D" uid="uid://cs6ybytvwlnlf" path="res://art/hats/cowboy_hat.png" id="4_dqkch"]
+[ext_resource type="Texture2D" uid="uid://dqnhs7qbidvb1" path="res://art/hats/party-hat.png" id="5_fjrip"]
+[ext_resource type="Texture2D" uid="uid://wqrfji0blpw" path="res://art/hats/space_helmet.png" id="6_smehm"]
+[ext_resource type="Texture2D" uid="uid://bdyap0cvn6yop" path="res://art/hats/spinny-hat.png" id="7_smehm"]
+[ext_resource type="Texture2D" uid="uid://duutm7udpib6j" path="res://art/hats/wizard-hat.png" id="7_ur7pv"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qlg0r"]
 atlas = ExtResource("3_qhqgy")
@@ -48,12 +53,117 @@ animations = [{
 "speed": 10.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_smehm"]
+atlas = ExtResource("5_fjrip")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ur7pv"]
+atlas = ExtResource("5_fjrip")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y4r1p"]
+atlas = ExtResource("5_fjrip")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d2wvv"]
+atlas = ExtResource("5_fjrip")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3v2ag"]
+atlas = ExtResource("5_fjrip")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jej6c"]
+atlas = ExtResource("5_fjrip")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f1ej7"]
+atlas = ExtResource("7_smehm")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oprun"]
+atlas = ExtResource("7_smehm")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a8ls1"]
+atlas = ExtResource("7_smehm")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_y4r1p"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_dqkch")
+}],
+"loop": true,
+"name": &"cowboy_hat",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"none",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_smehm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ur7pv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y4r1p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d2wvv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3v2ag")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jej6c")
+}],
+"loop": true,
+"name": &"party_hat",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_smehm")
+}],
+"loop": true,
+"name": &"space_helmet",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f1ej7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oprun")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a8ls1")
+}],
+"loop": true,
+"name": &"spinny_hat",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_ur7pv")
+}],
+"loop": true,
+"name": &"wizard_hat",
+"speed": 5.0
+}]
+
 [node name="player" type="CharacterBody2D"]
 physics_interpolation_mode = 1
 collision_mask = 2
 script = ExtResource("1_g2els")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="PlayerBody" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_g2els")
 animation = &"flight"
 
@@ -66,5 +176,10 @@ polygon = PackedVector2Array(-8.00001, -2.99997, -8.00002, -4.99997, -5.00003, -
 position = Vector2(-7.10543e-15, 0)
 scale = Vector2(0.7, 0.6)
 
-[connection signal="animation_looped" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_looped"]
+[node name="Hat" type="AnimatedSprite2D" parent="."]
+position = Vector2(4, -5)
+sprite_frames = SubResource("SpriteFrames_y4r1p")
+animation = &"spinny_hat"
+
+[connection signal="animation_looped" from="PlayerBody" to="." method="_on_animated_sprite_2d_animation_looped"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

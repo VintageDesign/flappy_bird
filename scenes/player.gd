@@ -13,8 +13,8 @@ func end_game():
 	game_started = false
 	
 
-func _init():
-	pass
+func _ready():
+	$Hat.play("spinny_hat")
 	
 
 func _physics_process(delta):
@@ -24,7 +24,7 @@ func _physics_process(delta):
 	
 		if Input.is_action_pressed("jump"):
 			target_velocity.y = -1 * jump_impulse 
-			$AnimatedSprite2D.play("flight")
+			$PlayerBody.play("flight")
 		
 			
 		
@@ -47,4 +47,4 @@ func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
 
 
 func _on_animated_sprite_2d_animation_looped() -> void:
-	$AnimatedSprite2D.stop()
+	$PlayerBody.stop()
