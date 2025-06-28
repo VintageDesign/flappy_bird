@@ -18,10 +18,12 @@ func _input(_event):
 	if Input.is_action_just_pressed("pause"):
 		if game_state == PAUSED:
 			print("Unpause")
+			$Menu.hide_all()
 			get_tree().paused = false
 			game_state = IN_GAME
 		else:
 			print("Pause")
+			$Menu/PauseMenu.show()
 			get_tree().paused = true
 			game_state = PAUSED
 			
@@ -71,3 +73,7 @@ func _on_player_hit() -> void:
 		if mob != null:
 			mob.queue_free()
 	obstacles.clear()
+
+
+func _on_menu_hat_changed(hat_selection) -> void:
+	$player.select_hat(hat_selection) # Replace with function body.

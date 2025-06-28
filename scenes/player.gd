@@ -14,8 +14,10 @@ func end_game():
 	
 
 func _ready():
-	$Hat.play("spinny_hat")
-	
+	$Hat.play("none")
+
+func select_hat(hat_selection):
+	$Hat.play(hat_selection)	
 
 func _physics_process(delta):
 	

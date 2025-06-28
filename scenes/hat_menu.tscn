@@ -1,0 +1,204 @@
+[gd_scene load_steps=19 format=3 uid="uid://dg1aicas1oy6u"]
+
+[ext_resource type="Theme" uid="uid://wv7msxwmemkc" path="res://HUD_Theme.tres" id="1_krj70"]
+[ext_resource type="Script" uid="uid://b7jpuh3jwdp86" path="res://scenes/hat_menu.gd" id="1_vt3d3"]
+[ext_resource type="Texture2D" uid="uid://cs6ybytvwlnlf" path="res://art/hats/cowboy_hat.png" id="2_0lmub"]
+[ext_resource type="Texture2D" uid="uid://duutm7udpib6j" path="res://art/hats/wizard-hat.png" id="3_oj5wu"]
+[ext_resource type="Texture2D" uid="uid://wqrfji0blpw" path="res://art/hats/space_helmet.png" id="4_vt3d3"]
+[ext_resource type="Texture2D" uid="uid://bdyap0cvn6yop" path="res://art/hats/spinny-hat.png" id="6_eqc8b"]
+[ext_resource type="Texture2D" uid="uid://dqnhs7qbidvb1" path="res://art/hats/party-hat.png" id="7_x32hb"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x32hb"]
+atlas = ExtResource("6_eqc8b")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jl5u7"]
+atlas = ExtResource("6_eqc8b")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y7x7k"]
+atlas = ExtResource("6_eqc8b")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lj06o"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x32hb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jl5u7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y7x7k")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lj06o"]
+atlas = ExtResource("7_x32hb")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bs4i6"]
+atlas = ExtResource("7_x32hb")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ojtof"]
+atlas = ExtResource("7_x32hb")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1jnqp"]
+atlas = ExtResource("7_x32hb")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ydgdc"]
+atlas = ExtResource("7_x32hb")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vqmhg"]
+atlas = ExtResource("7_x32hb")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4jkm2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lj06o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bs4i6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ojtof")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1jnqp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ydgdc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vqmhg")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="HatMenu" type="CanvasLayer"]
+script = ExtResource("1_vt3d3")
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -63.0
+offset_top = 27.0
+offset_right = 63.0
+offset_bottom = 50.0
+grow_horizontal = 2
+theme = ExtResource("1_krj70")
+text = "Select a Hat"
+
+[node name="CowboyHat" type="Button" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -144.0
+offset_top = 80.0
+offset_right = -57.0
+offset_bottom = 167.0
+grow_horizontal = 2
+icon = ExtResource("2_0lmub")
+flat = true
+icon_alignment = 1
+expand_icon = true
+
+[node name="WizardHat" type="Button" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -40.0
+offset_top = 80.0
+offset_right = 47.0
+offset_bottom = 167.0
+grow_horizontal = 2
+icon = ExtResource("3_oj5wu")
+flat = true
+icon_alignment = 1
+expand_icon = true
+
+[node name="SpaceHelmet" type="Button" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 72.0
+offset_top = 80.0
+offset_right = 159.0
+offset_bottom = 167.0
+grow_horizontal = 2
+icon = ExtResource("4_vt3d3")
+flat = true
+icon_alignment = 1
+expand_icon = true
+
+[node name="SpinnyHat" type="Button" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -144.0
+offset_top = 167.0
+offset_right = -57.0
+offset_bottom = 254.0
+grow_horizontal = 2
+flat = true
+icon_alignment = 1
+expand_icon = true
+
+[node name="animation" type="AnimatedSprite2D" parent="SpinnyHat"]
+position = Vector2(40, 44)
+scale = Vector2(4.5, 4.5)
+sprite_frames = SubResource("SpriteFrames_lj06o")
+frame_progress = 0.679674
+
+[node name="PartyHat" type="Button" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -40.0
+offset_top = 167.0
+offset_right = 47.0
+offset_bottom = 254.0
+grow_horizontal = 2
+flat = true
+icon_alignment = 1
+expand_icon = true
+
+[node name="animation" type="AnimatedSprite2D" parent="PartyHat"]
+position = Vector2(41, 48)
+scale = Vector2(5.6875, 5.6875)
+sprite_frames = SubResource("SpriteFrames_4jkm2")
+
+[node name="None" type="Button" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 72.0
+offset_top = 167.0
+offset_right = 159.0
+offset_bottom = 254.0
+grow_horizontal = 2
+theme = ExtResource("1_krj70")
+text = "None"
+flat = true
+icon_alignment = 1
+expand_icon = true
+
+[connection signal="pressed" from="CowboyHat" to="." method="_on_cowboy_hat_pressed"]
+[connection signal="pressed" from="WizardHat" to="." method="_on_wizard_hat_pressed"]
+[connection signal="pressed" from="SpaceHelmet" to="." method="_on_space_helmet_pressed"]
+[connection signal="pressed" from="SpinnyHat" to="." method="_on_spinny_hat_pressed"]
+[connection signal="pressed" from="PartyHat" to="." method="_on_party_hat_pressed"]
+[connection signal="pressed" from="None" to="." method="_on_none_pressed"]
