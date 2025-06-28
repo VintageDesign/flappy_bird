@@ -43,11 +43,14 @@ func on_spawn_tick_expired():
 	var mob = obstacle_scene.instantiate()
 	mob.position.y = get_viewport().get_visible_rect().size.y / 2 + offset
 	mob.position.x = get_viewport().get_visible_rect().size.x + 32
-	
+	mob.score.connect(_on_score)
 	mob.hit.connect(_on_player_hit)
 	obstacles.append(mob)
 	add_child(mob)  
 	
+
+
+func _on_score():
 	$HUD.increment_score()
 
 func _on_player_hit() -> void:

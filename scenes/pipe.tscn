@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://djtf17p1qsx46"]
+[gd_scene load_steps=6 format=3 uid="uid://djtf17p1qsx46"]
 
 [ext_resource type="Texture2D" uid="uid://bixrsjf2o5uwq" path="res://art/pipe.png" id="1_8x3ej"]
 [ext_resource type="Script" uid="uid://dr044u246sgs0" path="res://scenes/pipe.gd" id="1_arpqm"]
@@ -8,6 +8,9 @@ size = Vector2(32.5, 1037)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_arpqm"]
 size = Vector2(20, 19.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ejsh2"]
+size = Vector2(32, 50)
 
 [node name="Pipe" type="CharacterBody2D" groups=["obstacles"]]
 process_mode = 1
@@ -46,6 +49,12 @@ shape = SubResource("RectangleShape2D_arpqm")
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 scale = Vector2(1.6, 3.95)
 
+[node name="Score" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Score"]
+shape = SubResource("RectangleShape2D_ejsh2")
+
 [connection signal="body_entered" from="UpperSprite/Upper" to="." method="_on_collision"]
 [connection signal="body_entered" from="LowerSprite/Lower" to="." method="_on_collision"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
+[connection signal="body_entered" from="Score" to="." method="_on_score_area_entered"]

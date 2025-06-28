@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
-@export var fall_accel = 75
-@export var jump_impulse = 50
+@export var fall_accel = 300
+@export var jump_impulse = 75
 
 signal start_game
 signal left_screen
