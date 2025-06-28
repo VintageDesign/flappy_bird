@@ -16,3 +16,7 @@ func hide_all():
 
 func _on_hat_menu_hat_changed(hat_selection) -> void:
 	hat_changed.emit(hat_selection)
+
+
+func _on_exit_pressed() -> void:
+	get_tree().quit()

@@ -11,21 +11,6 @@ script = ExtResource("1_kukqi")
 
 [node name="PauseMenu" type="CanvasLayer" parent="."]
 
-[node name="ChangeHat" type="Button" parent="PauseMenu"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -61.0
-offset_top = -40.0
-offset_right = 61.0
-offset_bottom = -11.0
-grow_horizontal = 2
-grow_vertical = 2
-theme = ExtResource("1_n87rw")
-text = "Change Hat"
-
 [node name="Label" type="Label" parent="PauseMenu"]
 anchors_preset = 8
 anchor_left = 0.5
@@ -42,5 +27,36 @@ size_flags_horizontal = 4
 theme = ExtResource("1_n87rw")
 text = "Paused!"
 
+[node name="ChangeHat" type="Button" parent="PauseMenu"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -61.0
+offset_top = -40.0
+offset_right = 61.0
+offset_bottom = -11.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_n87rw")
+text = "Change Hat"
+
+[node name="Exit" type="Button" parent="PauseMenu"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -52.0
+offset_top = -6.0
+offset_right = 52.0
+offset_bottom = 23.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_n87rw")
+text = "Exit Game"
+
 [connection signal="hat_changed" from="HatMenu" to="." method="_on_hat_menu_hat_changed"]
 [connection signal="pressed" from="PauseMenu/ChangeHat" to="." method="_on_change_hat_pressed"]
+[connection signal="pressed" from="PauseMenu/Exit" to="." method="_on_exit_pressed"]
