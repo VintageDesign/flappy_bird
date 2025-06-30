@@ -10,6 +10,7 @@ var target_velocity = Vector2.ZERO
 var game_started = false
 
 func end_game():
+	$Quack.play()
 	game_started = false
 	
 
@@ -27,9 +28,10 @@ func _physics_process(delta):
 		if Input.is_action_pressed("jump"):
 			target_velocity.y = -1 * jump_impulse 
 			$PlayerBody.play("flight")
-		
-			
-		
+			if $Flap.playing == false:
+				$Flap.play()
+				$Flap.pitch_scale = randf_range(.9, 1.1)
+	
 		velocity = target_velocity
 		move_and_slide()
 		
