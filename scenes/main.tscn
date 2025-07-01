@@ -24,7 +24,8 @@ process_mode = 1
 
 [node name="ObstacleSpawnTick" type="Timer" parent="."]
 process_mode = 1
-wait_time = 1.5
+process_physics_priority = 99
+wait_time = 1.25
 
 [node name="HUD" parent="." instance=ExtResource("4_jyhfs")]
 

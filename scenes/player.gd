@@ -18,13 +18,13 @@ func _ready():
 	$Hat.play("none")
 
 func select_hat(hat_selection):
-	$Hat.play(hat_selection)	
+	$Hat.play(hat_selection)
 
 func _physics_process(delta):
 	
 	if game_started:
 		target_velocity.y = target_velocity.y + (fall_accel * delta)
-	
+
 		if Input.is_action_pressed("jump"):
 			target_velocity.y = -1 * jump_impulse 
 			$PlayerBody.play("flight")
@@ -34,7 +34,6 @@ func _physics_process(delta):
 	
 		velocity = target_velocity
 		move_and_slide()
-		
 
 	else:
 		if Input.is_action_pressed("jump"):
