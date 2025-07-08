@@ -4,17 +4,20 @@ extends Node
 const save_file_location = "user://persistent_data.save"
 
 var high_score = 0
+var current_volume = 0
 
 
 func _serialize():
 	var file_dict = {
-		"high_score": str(high_score)
+		"high_score": str(high_score),
+		"current_volume": str(current_volume)
 	}
 	return file_dict
 	
 
 func _deserialize(file_dict):
-	high_score = int(file_dict.highscore)
+	high_score = int(file_dict['high_score'])
+	current_volume = float(file_dict['current_volume'])
 	
 	
 func save():
@@ -44,4 +47,4 @@ func load():
 	
 		var node_data = json.data
 
-		high_score = node_data.high_score
+		_deserialize(node_data)

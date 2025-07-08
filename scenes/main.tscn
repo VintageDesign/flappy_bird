@@ -33,3 +33,4 @@ wait_time = 1.25
 
 [connection signal="timeout" from="ObstacleSpawnTick" to="." method="on_spawn_tick_expired"]
 [connection signal="hat_changed" from="Menu" to="." method="_on_menu_hat_changed"]
+[connection signal="volume_changed" from="Menu" to="." method="_on_menu_volume_changed"]

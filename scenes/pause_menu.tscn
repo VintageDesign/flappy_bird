@@ -57,6 +57,41 @@ grow_vertical = 2
 theme = ExtResource("1_n87rw")
 text = "Exit Game"
 
+[node name="VolumeSlider" type="VSlider" parent="PauseMenu"]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -33.0
+offset_top = -126.0
+offset_right = -17.0
+offset_bottom = -13.0
+grow_horizontal = 0
+grow_vertical = 0
+size_flags_horizontal = 4
+theme = ExtResource("1_n87rw")
+max_value = 1.0
+step = 0.01
+value = 1.0
+tick_count = 5
+
+[node name="VolumeLabel" type="Label" parent="PauseMenu"]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -118.0
+offset_top = -33.0
+offset_right = -46.0
+offset_bottom = -10.0
+grow_horizontal = 0
+grow_vertical = 0
+theme = ExtResource("1_n87rw")
+text = "Volume"
+
 [connection signal="hat_changed" from="HatMenu" to="." method="_on_hat_menu_hat_changed"]
 [connection signal="pressed" from="PauseMenu/ChangeHat" to="." method="_on_change_hat_pressed"]
 [connection signal="pressed" from="PauseMenu/Exit" to="." method="_on_exit_pressed"]
+[connection signal="drag_ended" from="PauseMenu/VolumeSlider" to="." method="_on_volume_slider_drag_ended"]

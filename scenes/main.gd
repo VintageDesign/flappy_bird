@@ -13,6 +13,8 @@ var approach_speed = 50
 enum {IN_GAME, PAUSED}
 var game_state = IN_GAME
 
+var audio_bus_name := "Master"
+@onready var _bus := AudioServer.get_bus_index(audio_bus_name)
 
 
 func _init():
@@ -35,6 +37,8 @@ func _input(_event):
 func _ready():
 	pipe_mutex = Mutex.new()
 	$HUD.set_high_score(persistent_data.high_score)
+	AudioServer.set_bus_volume_db(_bus, linear_to_db(persistent_data.current_volume))
+	$Menu/PauseMenu/VolumeSlider.value = persistent_data.current_volume
 	$player.start_game.connect(on_start_game)
 	$player.left_screen.connect(_on_player_hit)
 	player_start_pos.y = get_viewport().get_visible_rect().size.y/2
@@ -100,3 +104,10 @@ func _on_player_hit() -> void:
 
 func _on_menu_hat_changed(hat_selection) -> void:
 	$player.select_hat(hat_selection) # Replace with function body.
+
+
+func _on_menu_volume_changed(value) -> void:
+	persistent_data.current_volume = value
+	persistent_data.save()
+	
+	AudioServer.set_bus_volume_db(_bus, linear_to_db(value))
